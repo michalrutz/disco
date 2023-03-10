@@ -14,10 +14,10 @@ let model; // Declare the variable outside the loader function
 
 // Load the GLTF model
 const loader = new GLTFLoader();
-loader.load('./static/disco.glb', function(gltf) {
+loader.load('./static/joined.glb', function(gltf) {
   // Assign the loaded object to the variable
-  console.log(gltf.scene.children[0])
-  let mesh = gltf.scene.children[0]
+  console.log(gltf.scene.children[0].children[0].children[0].children[0])
+  let mesh = gltf.scene.children[0].children[0].children[0].children[0]
   mesh.material = new THREE.MeshBasicMaterial({color:"red"});
 
   scene.add(gltf.scene.children[0]);
