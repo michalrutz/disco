@@ -2,4 +2,55 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    font-size: 62.5%;
+    font-family: 'Poppins', sans-serif ;
+    font-weight: 400;
+    background-color: black;
+}
+html * {
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#canvas_1 {
+    height: 100vh;
+    width:  100rem;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    border: 1px, solid, white ;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.desc{
+    padding: 1rem;
+    display: flex;
+    gap: 0rem;
+    flex-direction: column;
+    color: white;
+    font-size: 1.6rem;
+}
+.desc h1 {
+    font-size: 3.2rem;
+}
+.desc h3 {
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+.desc p {
+    font-size: 1.4rem;
+    padding: 1rem 0;
+    max-width: 35rem;
+    width: 100%;
 }
