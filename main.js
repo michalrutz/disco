@@ -42,7 +42,7 @@ draco.setDecoderPath("static/draco/")
 const loader = new GLTFLoader();
 loader.setDRACOLoader(draco);
 
-loader.load('./static/disco_draco.glb', function(gltf) {
+loader.load('./static/disco draco.glb', function(gltf) {
   // Assign the loaded object to the variable
   console.log(gltf.scene.children[0])
   model = gltf.scene.children[0]
