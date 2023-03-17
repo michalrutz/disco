@@ -30,11 +30,19 @@ scene.add(ambient)
 
 //MESH
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+
 let model; // Declare the variable outside the loader function
 
 // Load the GLTF model
+//DRACO
+const draco = new DRACOLoader();
+draco.setDecoderPath("static/draco/")
+//LOADER
 const loader = new GLTFLoader();
-loader.load('./static/joined centered redused.glb', function(gltf) {
+loader.setDRACOLoader(draco);
+
+loader.load('./static/disco_draco.glb', function(gltf) {
   // Assign the loaded object to the variable
   console.log(gltf.scene.children[0])
   model = gltf.scene.children[0]

@@ -10,6 +10,7 @@ html, body {
 html * {
     margin: 0;
     padding: 0;
+    color: white;
 }
 body {
     display: flex;
@@ -18,6 +19,7 @@ body {
 }
 
 #canvas_1 {
+    position: fixed;
     height: 100vh;
     width:  100rem;
     top: 0;
@@ -25,8 +27,12 @@ body {
     z-index: 5;
     border: 1px, solid, white ;
 }
-
+.container{
+    position: relative;
+    width:  100rem; 
+}
 main {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
