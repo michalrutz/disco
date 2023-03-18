@@ -2,9 +2,9 @@ import './style.css'
 import * as THREE from "three"
 
 const scene = new THREE.Scene()
-const sizes = {
-  w: 800,
-  h: 800
+let  sizes = {
+  w: window.innerHeight,
+  h: window.innerHeight
 }
 
 //CAMERA
@@ -71,25 +71,26 @@ animate()
 scene.add(camera)
 
 const canvas = document.getElementById("canvas_1")
-const renderer = new THREE.WebGLRenderer({canvas:canvas, antialias:true })
+const renderer = new THREE.WebGLRenderer({canvas:canvas, antialias:true }) //!!!
 renderer.setSize( sizes.w, sizes.h ) 
 renderer.physicallyCorrectLights = true  
 renderer.render( scene , camera )
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-const controls = new OrbitControls( camera, canvas )
-controls.enableDamping = true
+//const controls = new OrbitControls( camera, canvas )
+//controls.enableDamping = true
 
 const start = Date.now()/1000
+//ANIMATE
 function animate () {
   let timeElapsed = Date.now()/1000 - start
 
   spot.position.y = (Math.sin(timeElapsed))
   spot.position.z = (Math.cos(timeElapsed))
-  
+
   spotWhite.intensity = (Math.sin(Math.max(timeElapsed/4, 0.2)))*10
 
-  controls.update()
+  //controls.update()
 
   renderer.render( scene , camera )
   window.requestAnimationFrame(animate)
@@ -99,17 +100,19 @@ animate()
 
 window.addEventListener( "resize", resize )
 function resize() {
+  console.log("RESIZE")
   camera.aspect = sizes.w / sizes.h 
   camera.updateProjectionMatrix()
-  if (window.innerWidth<sizes.w){
+
+  if( window.innerHeight > window.innerWidth ){
     renderer.setSize( window.innerWidth, window.innerWidth )
   }
   else {
-    renderer.setSize( sizes.w, sizes.h )
+    renderer.setSize( window.innerHeight, window.innerHeight )
 
   }
   renderer.setPixelRatio( 3 )
-  renderer.render( scene , carotationmera )
+  renderer.render( scene , camera )
 }
 
 const rotateMesh = (model, rotation) => {
@@ -129,6 +132,10 @@ const rotateMesh = (model, rotation) => {
   animate()
 }
 
+const changeText = (elementID, text) => {
+  console.log("text")
+  document.getElementById(elementID).innerHTML = text;
+}
+let paragraph2 = "NEXT"
 
-document.getElementById("next_1").addEventListener( "click", ()=> rotateMesh(model, 0.5) )
-document.getElementById("next_2").addEventListener( "click", ()=> scaleMesh(model, 2) )
+document.getElementById("next_1").addEventListener( "click", ()=> {rotateMesh(model, 0.5); changeText("desc_p", paragraph2) } )
